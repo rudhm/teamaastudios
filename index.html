@@ -66,7 +66,7 @@ img{display:block;max-width:100%;}
   padding:12px 32px;
 }
 .nav-logo{display:flex;align-items:center;gap:10px;}
-.nav-logo img{height:48px;width:48px;object-fit:contain;}
+.nav-logo img{height:60px;width:auto;object-fit:contain;transform:scale(1.1);}
 .nav-logo-text{font-family:var(--font-display);font-size:18px;letter-spacing:0.5px;}
 .nav-logo-text .aa{color:var(--gold);}
 .nav-links{display:flex;gap:30px;align-items:center;}
@@ -260,7 +260,7 @@ img{display:block;max-width:100%;}
 .footer{padding:56px 0 40px;border-top:1px solid var(--line);}
 .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
 .footer-logo{display:flex;align-items:center;gap:10px;}
-.footer-logo img{height:40px;width:40px;object-fit:contain;}
+.footer-logo img{height:54px;width:auto;object-fit:contain;transform:scale(1.1);}
 .footer-tagline{font-size:12px;color:var(--muted);letter-spacing:1px;}
 .footer-social{display:flex;gap:20px;}
 .footer-social a{font-size:12px;letter-spacing:1.5px;color:var(--muted);transition:color .25s ease;}
@@ -413,7 +413,7 @@ img{display:block;max-width:100%;}
 
 <nav class="nav" id="mainNav">
   <a href="#/" class="nav-logo">
-    <img src="logo.png" alt="TeamAA Studios logo">
+    <img src="nav_logo.png" alt="TeamAA Studios logo">
     <span class="nav-logo-text">Team<span class="aa">AA</span></span>
   </a>
   <button class="nav-burger" id="burger">☰</button>
@@ -444,8 +444,8 @@ function gradFor(seed){
 }
 
 const videoProjects = [
-  {id:1,cat:'Reels',title:'Neon Runner',client:'Pulse Sportswear',desc:'Fast-cut vertical reel built for scroll-stopping retention on a sneaker drop.', brief:'Launch a limited sneaker line to a Gen-Z audience in under 20 seconds.', approach:'Frame-accurate beat sync, whip-pans and kinetic type timed to the drop.', tools:['Premiere Pro','After Effects']},
-  {id:2,cat:'Ads',title:'Golden Hour',client:'Marea Coffee',desc:'Vertical brand ad blending product macro shots with lifestyle footage.', brief:'Reposition a coffee brand as a daily ritual, not just a product.', approach:'Warm grade, ambient sound design, slow-motion pours cut on the beat.', tools:['DaVinci Resolve','After Effects']},
+  {id:1,cat:'Reels',title:'Neon Runner',img:'neon_runner.jpg',client:'Pulse Sportswear',desc:'Fast-cut vertical reel built for scroll-stopping retention on a sneaker drop.', brief:'Launch a limited sneaker line to a Gen-Z audience in under 20 seconds.', approach:'Frame-accurate beat sync, whip-pans and kinetic type timed to the drop.', tools:['Premiere Pro','After Effects']},
+  {id:2,cat:'Ads',title:'Golden Hour',img:'golden_hour.jpg',client:'Marea Coffee',desc:'Vertical brand ad blending product macro shots with lifestyle footage.', brief:'Reposition a coffee brand as a daily ritual, not just a product.', approach:'Warm grade, ambient sound design, slow-motion pours cut on the beat.', tools:['DaVinci Resolve','After Effects']},
   {id:3,cat:'Motion Graphics',title:'Signal Loop',client:'Orbit Finance', desc:'Data-driven motion piece explaining a fintech feature in one breath.', brief:'Simplify a complex savings feature into a single vertical explainer.', approach:'Custom icon system animated in sync with a scripted voiceover.', tools:['After Effects','Illustrator']},
   {id:4,cat:'Social Content',title:'Kitchen Static',client:'Home & Co', desc:'Recipe series edit optimized for autoplay silent viewing.', brief:'Grow a home-goods brand through repeatable weekly recipe content.', approach:'Bold on-screen captions, tight jump cuts, consistent title card system.', tools:['Premiere Pro']},
   {id:5,cat:'Brand Videos',title:'Afterglow', client:'Studio Novak', desc:'Founder story told through a single unbroken vertical narrative arc.', brief:'Introduce a design studio\'s founder ahead of a rebrand launch.', approach:'Interview intercut with process footage, color-matched to the new brand.', tools:['DaVinci Resolve']},
@@ -456,7 +456,7 @@ const videoProjects = [
 
 const seriesList = [
   {
-    id:'ashfall', title:'Ashfall', genre:'Sci-Fi / Drama', episodes:8,
+    id:'ashfall', title:'Ashfall', img:'ashfall.jpg', genre:'Sci-Fi / Drama', episodes:8,
     synopsis:'In a city built inside a dormant volcano, a courier who smuggles memories for the wealthy uncovers a plan to erase an entire district\'s past.',
     characters:[
       {name:'Rhen Okoye', desc:'Memory courier with a debt she can\'t outrun.'},
@@ -471,7 +471,7 @@ const seriesList = [
     ]
   },
   {
-    id:'paperlanterns', title:'Paper Lanterns', genre:'Slice of Life / Fantasy', episodes:12,
+    id:'paperlanterns', title:'Paper Lanterns', img:'paper_lanterns.jpg', genre:'Slice of Life / Fantasy', episodes:12,
     synopsis:'A shrine keeper\'s apprentice learns to fold spirits into paper lanterns, one town\'s grief at a time, in a coastal village slowly forgetting its festivals.',
     characters:[
       {name:'Mei Tanaka', desc:'Reluctant apprentice with an unusual gift for listening.'},
@@ -504,8 +504,9 @@ const seriesList = [
 
 /* ============ HELPERS ============ */
 function posterCard(p, i){
+  const bg = p.img ? `url(${p.img}) center/cover` : gradFor(i);
   return `<div class="poster-card reveal" data-lightbox="video" data-id="${p.id}">
-    <div class="art" style="background:${gradFor(i)}"></div>
+    <div class="art" style="background:${bg}"></div>
     <div class="glow"></div>
     <div class="poster-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
     <div class="poster-meta">
@@ -516,8 +517,9 @@ function posterCard(p, i){
   </div>`;
 }
 function seriesCard(s, i){
+  const bg = s.img ? `url(${s.img}) center/cover` : gradFor(i+1);
   return `<div class="series-card reveal" data-lightbox="series" data-id="${s.id}">
-    <div class="art" style="background:${gradFor(i+1)}"></div>
+    <div class="art" style="background:${bg}"></div>
     <div class="glow"></div>
     <div class="series-meta">
       <div class="series-genre">${s.genre}</div>
@@ -725,7 +727,7 @@ routes['/contact'] = () => `
           <div class="about-label">SOCIAL</div>
           <div class="contact-social">
             <a href="https://www.instagram.com/team_aa_studios/">Instagram</a>
-            <a href="#">YouTube</a>
+            <a href="https://www.youtube.com/@TeamAAedits">YouTube</a>
             <a href="https://www.linkedin.com/in/team-aa-edits-b5473b32a/">LinkedIn</a>
             <a href="#">Twitter / X</a>
           </div>
@@ -742,12 +744,12 @@ function footer(){
     <div class="container">
       <div class="footer-row">
         <a href="#/" class="footer-logo">
-          <img src="logo.png" alt="">
+          <img src="nav_logo.png" alt="">
           <span class="footer-tagline">Team AA Studios &mdash; We Edit Stories. We Create Worlds.</span>
         </a>
         <div class="footer-social">
           <a href="https://www.instagram.com/team_aa_studios/">Instagram</a>
-          <a href="#">YouTube</a>
+          <a href="https://www.youtube.com/@TeamAAedits">YouTube</a>
           <a href="https://www.linkedin.com/in/team-aa-edits-b5473b32a/">LinkedIn</a>
         </div>
       </div>
@@ -856,7 +858,7 @@ function openLightbox(type, id){
     const i = videoProjects.indexOf(p);
     lbContent.innerHTML = `
       <div class="lb-video">
-        <div class="lb-frame" style="background:${gradFor(i)}"></div>
+        <div class="lb-frame" style="background:${p.img ? `url(${p.img}) center/cover` : gradFor(i)}"></div>
         <div class="lb-info">
           <div class="lb-cat">${p.cat}</div>
           <h3 class="lb-title">${p.title}</h3>
@@ -875,7 +877,7 @@ function openLightbox(type, id){
     const i = seriesList.indexOf(s);
     lbContent.innerHTML = `
       <div class="lb-series">
-        <div class="lb-series-hero" style="background:${gradFor(i+1)}">
+        <div class="lb-series-hero" style="background:${s.img ? `url(${s.img}) center/cover` : gradFor(i+1)}">
           <div class="lb-series-hero-info">
             <div class="poster-cat" style="color:var(--amber);">${s.genre}</div>
             <div class="lb-series-title">${s.title}</div>
