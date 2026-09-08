@@ -75,6 +75,7 @@
     .window-bar i { width: 7px; height: 7px; border-radius: 50%; background: #635b54; }
     .window-bar i:first-child { background: var(--amber); }
     .window-title { margin-left: auto; color: #a7a09a; font-size: 9px; letter-spacing: 1px; }
+    .interface-gif { position: relative; z-index: 1; width: 100%; height: calc(100% - 42px); margin-top: 18px; border: 1px solid rgba(255,255,255,.08); object-fit: cover; object-position: center; }
     .waveform { position: relative; height: 130px; margin: 22px 0; padding: 22px 14px; border: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.25); }
     .waveform::after { content: ''; position: absolute; left: 38%; top: 0; bottom: 0; border-left: 2px solid var(--gold); box-shadow: 0 0 12px var(--gold); }
     .bars { display: flex; height: 100%; align-items: center; justify-content: space-between; gap: 3px; }
@@ -206,14 +207,7 @@
         <div class="hero-art" aria-label="Team AA SFX interface preview">
           <div class="interface">
             <div class="window-bar"><i></i><i></i><i></i><span class="window-title">TEAM AA SFX / BROWSER 1.2</span></div>
-            <div class="waveform"><div class="bars" aria-hidden="true">
-              <i style="--h:25%"></i><i style="--h:48%"></i><i style="--h:34%"></i><i style="--h:70%"></i><i style="--h:45%"></i><i style="--h:90%"></i><i style="--h:56%"></i><i style="--h:32%"></i><i style="--h:77%"></i><i style="--h:48%"></i><i style="--h:64%"></i><i style="--h:37%"></i><i style="--h:83%"></i><i style="--h:52%"></i><i style="--h:30%"></i><i style="--h:71%"></i><i style="--h:44%"></i><i style="--h:88%"></i><i style="--h:42%"></i><i style="--h:65%"></i><i style="--h:35%"></i><i style="--h:73%"></i>
-            </div></div>
-            <div class="tool-list">
-              <div class="tool-row"><span>01 &nbsp; SEARCH “METAL HIT”</span><strong>24 RESULTS</strong></div>
-              <div class="tool-row"><span>02 &nbsp; PREVIEW / FAVORITE</span><strong>READY</strong></div>
-              <div class="tool-row"><span>03 &nbsp; DRAG TO TIMELINE</span><strong>WAV + MP3</strong></div>
-            </div>
+            <img class="interface-gif" src="GIF.gif" alt="Animated Team AA SFX interface preview">
           </div>
           <div class="orbit"></div>
         </div>
